@@ -102,3 +102,75 @@ void readPNames(pNames_t *pNames, lumpInfo_t *lumpInfo) {
 		pNames->names[n][8] = 0;
 	}
 }
+
+texture_t *readTextures(lumpInfo_t *lumpInfo, unsigned int *count) {
+	lumpInfo_t pNamesInfo;
+	pNames_t pNames;
+	texture_t *textures, *texture;
+	patch_t *patch;
+	unsigned int n, m, offset;
+	unsigned short patchId;
+	wad_t *wad;
+	
+	wad = lumpInfo->wad;
+	
+	if (!findLumpInfo(&pNamesInfo, wad, "PNAMES")) {
+		*count = 1;
+		return NULL;
+	}
+	
+	readPNames(&pNames, &pNamesInfo);
+	
+	//Get textures count
+	fseek(wad->handle, lumpInfo->pos, SEEK_SET);
+	fread(count, 4, 1, wad->handle);
+	
+	textures = malloc(sizeof(texture_t) * *count);
+	
+	for (n = 0; n < *count; ++n) {
+		texture = &textures[n];
+		texture->name[8] = 0;
+		
+		//read offset of the texture
+		fseek(wad->handle, lumpInfo->pos + 4 + (n * 4), SEEK_SET);
+		fread(&offset, 4, 1, wad->handle);
+		
+		//read data of the texture
+		fseek(wad->handle, lumpInfo->pos + offset, SEEK_SET);
+		fread(texture->name, 8, 1, wad->handle);
+		fread(&texture->masked, 4, 2, wad->handle); //masked, width and height
+		
+		fseek(wad->handle, 4, SEEK_CUR);
+		fread(&texture->patchCount, 2, 1, wad->handle);
+		
+		if (!texture->patchCount) {
+			continue;
+		}
+		
+		texture->patches = malloc(sizeof(patch_t) * texture->patchCount);
+		
+		for (m = 0; m < texture->patchCount; ++m) {
+			patch = &texture->patches[m];
+			
+			fread(&patch->origin, 2, 2, wad->handle);
+			fread(&patchId, 2, 1, wad->handle);
+			fread(&patch->stepdir, 2, 2, wad->handle);
+			
+			strcpy(patch->name, pNames.names[patchId]);
+		}
+	}
+	
+	free(pNames.names);
+	
+	return textures;
+}
+
+void freeTextures(texture_t *textures, unsigned int count) {
+	unsigned int n;
+	
+	for (n = 0; n < count; ++n) {
+		free(textures[n].patches);
+	}
+	
+	free(textures);
+}

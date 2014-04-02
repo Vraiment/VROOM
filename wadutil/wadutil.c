@@ -24,7 +24,7 @@ int main(int argc, const char * argv[]) {
 	char *d_argv[] = {
 		"", //irrelevant
 		"DOOM1.WAD", //file
-		"--PNAMES" //mode
+		"--TEXTURE1" //mode
 	};
 	
 	if (argc != 3) {
@@ -62,6 +62,8 @@ int main(int argc, const char * argv[]) {
 		printDirectory(&wad);
 	} else if (!strcmp(mode, "--PNAMES")) {
 		printPNames(&wad);
+	} else if (!strcmp(mode, "--TEXTURE1") || !strcmp(mode, "--TEXTURE2")) {
+		printTextures(&wad, &mode[2]);
 	} else {
 		printf("unknown option %s\n", mode);
 	}

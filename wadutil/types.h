@@ -47,4 +47,26 @@ typedef struct {
 
 void readPNames(pNames_t *pNames, lumpInfo_t *lumpInfo);
 
+typedef struct {
+	struct {
+		unsigned short x;
+		unsigned short y;
+	} origin;
+	char name[9];
+	unsigned short stepdir;
+	unsigned short colormap;
+} patch_t;
+
+typedef struct {
+	char name[9];
+	unsigned int masked;
+	unsigned short width;
+	unsigned short height;
+	unsigned short patchCount;
+	patch_t *patches;
+} texture_t;
+
+texture_t *readTextures(lumpInfo_t *lumpInfo, unsigned int *count);
+void freeTextures(texture_t *textures, unsigned int count);
+
 #endif //WADUTIL_WAD

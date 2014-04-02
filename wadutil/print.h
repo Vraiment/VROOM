@@ -19,4 +19,6 @@ void printDirectory(wad_t *wad);
 
 void printPNames(wad_t *wad);
 
+void printTextures(wad_t *wad, const char *name);
+
 #endif //WADUTIL_PRINT
