@@ -11,7 +11,24 @@
 #include <stdlib.h>
 
 void printHelp() {
-	printf("oh noes!, help!\n");
+	printf("NAME\n");
+	printf("\twadutil - WAD file dump utility\n\n");
+	
+	printf("SYNOPSIS\n");
+	printf("\twadutil <filename> <option>\n\n");
+	
+	printf("DESCRIPTION\n");
+	printf("\twadutil is a command line utility to dump data of a WAD file.\n");
+	printf("\tIt requires a WAD file and only one option.\n\n");
+	
+	printf("OPTIONS\n");
+	printf("\t--header\n\t\tPrints the header of the WAD file.\n\n");
+	printf("\t-h\n\t\tSame as --header.\n\n");
+	printf("\t--directory\n\t\tPrints the directory of the WAD file.\n\n");
+	printf("\t-d\n\t\tSame as --directory.\n\n");
+	printf("\t--PNAMES\n\t\tPrints the list of patch names of the WAD file.\n\n");
+	printf("\t--TEXTURE1\n\t\tPrints the info about the TEXTURE1 lump.\n\n");
+	printf("\t--TEXTURE2\n\t\tPrints the info about the TEXTURE2 lump.\n\n");
 }
 
 void printHeader(wad_t *wad) {
