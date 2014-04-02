@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B10B91D18EC87ED00355FB1 /* print.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B10B91B18EC87ED00355FB1 /* print.c */; };
 		5B16789118EB7A0000FCF028 /* am_map.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B16780618EB7A0000FCF028 /* am_map.c */; };
 		5B16789218EB7A0000FCF028 /* d_items.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B16781018EB7A0000FCF028 /* d_items.c */; };
 		5B16789318EB7A0000FCF028 /* d_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B16781218EB7A0000FCF028 /* d_main.c */; };
@@ -97,6 +98,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5B10B91B18EC87ED00355FB1 /* print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = print.c; sourceTree = "<group>"; };
+		5B10B91C18EC87ED00355FB1 /* print.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = print.h; sourceTree = "<group>"; };
 		5B1677FA18EB78A400FCF028 /* VROOM */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = VROOM; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B16780618EB7A0000FCF028 /* am_map.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = am_map.c; path = vroom/am_map.c; sourceTree = SOURCE_ROOT; };
 		5B16780718EB7A0000FCF028 /* am_map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = am_map.h; path = vroom/am_map.h; sourceTree = SOURCE_ROOT; };
@@ -413,9 +416,11 @@
 		5B67DA2718EBC62100A8A8D4 /* wadutil */ = {
 			isa = PBXGroup;
 			children = (
-				5B67DA2818EBC62100A8A8D4 /* wadutil.c */,
-				5B67DA3318EBD46800A8A8D4 /* types.h */,
+				5B10B91B18EC87ED00355FB1 /* print.c */,
+				5B10B91C18EC87ED00355FB1 /* print.h */,
 				5B67DA3418EBD53000A8A8D4 /* types.c */,
+				5B67DA3318EBD46800A8A8D4 /* types.h */,
+				5B67DA2818EBC62100A8A8D4 /* wadutil.c */,
 			);
 			path = wadutil;
 			sourceTree = "<group>";
@@ -558,6 +563,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B10B91D18EC87ED00355FB1 /* print.c in Sources */,
 				5B67DA3618EBD5A400A8A8D4 /* types.c in Sources */,
 				5B67DA2918EBC62100A8A8D4 /* wadutil.c in Sources */,
 			);
@@ -724,6 +730,7 @@
 				5B67DA2E18EBC62100A8A8D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
