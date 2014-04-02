@@ -163,9 +163,11 @@ int xlatekey(void)
 
 void I_ShutdownGraphics(void)
 {
+  if (!X_display) return;
+
   // Detach from X server
   if (!XShmDetach(X_display, &X_shminfo))
-	    I_Error("XShmDetach() failed in I_ShutdownGraphics()");
+	    I_Error("XShmDetach() failed in I_ShutdownGraphics()"); //can cause infinite loop
 
   // Release shared memory.
   shmdt(X_shminfo.shmaddr);
