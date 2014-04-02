@@ -22,15 +22,16 @@ int main(int argc, const char * argv[]) {
 	const char *mode;
 	int n;
 	lumpInfo_t lumpInfo;
+	pNames_t pNames = { NULL, 0, NULL };
 	
 #ifdef DEBUG
 	char *d_argv[] = {
 		"", //irrelevant
 		"DOOM1.WAD", //file
-		"-d" //mode
+		"--pnames" //mode
 	};
 	
-	argv = d_argv;
+	*((char***)&argv) = d_argv; //HOW UGLY!
 	argc = 3;
 #endif
 	
@@ -67,6 +68,23 @@ int main(int argc, const char * argv[]) {
 			
 			printf("%d) %s => size: %d bytes, position: %d\n", n, lumpInfo.name, lumpInfo.size, lumpInfo.pos);
 		}
+		
+		printf("\nTotal:\t%d\n", wad.lumpCount);
+	} else if (!strcmp(mode, "--pnames")) {
+		if (!findLumpInfo(&lumpInfo, &wad, "PNAMES")) {
+			printf("no \"PNAMES\" lump found.\n");
+			return 0;
+		}
+		
+		readPNames(&pNames, &lumpInfo);
+		
+		for (n = 0; n < pNames.count; ++n) {
+			printf("%d) %s\n", n, pNames.names[n]);
+		}
+		
+		printf("\nTotal:\t%d\n", pNames.count);
+		
+		free(pNames.names);
 	} else {
 		printf("unknown option %s\n", mode);
 	}

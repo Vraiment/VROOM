@@ -37,5 +37,14 @@ typedef struct {
 } lumpInfo_t;
 
 void readLumpInfo(lumpInfo_t *lumpInfo, wad_t *wad, unsigned int lumpNumber);
+char findLumpInfo(lumpInfo_t *lumpInfo, wad_t *wad, const char *name);
+
+typedef struct {
+	wad_t *wad;
+	unsigned int count;
+	char (*names)[9];
+} pNames_t;
+
+void readPNames(pNames_t *pNames, lumpInfo_t *lumpInfo);
 
 #endif //WADUTIL_WAD

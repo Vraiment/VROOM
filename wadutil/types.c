@@ -64,4 +64,40 @@ void readLumpInfo(lumpInfo_t *lumpInfo, wad_t *wad, unsigned int lumpNumber) {
 	
 	fread(&lumpInfo->pos, 4, 2, wad->handle);
 	fread(&lumpInfo->name, 8, 1, wad->handle);
+	lumpInfo->name[8] = 0;
+}
+
+char findLumpInfo(lumpInfo_t *lumpInfo, wad_t *wad, const char *name) {
+	char fname[9];
+	int n;
+	lumpInfo_t fLumpInfo;
+	
+	fseek(wad->handle, wad->dirPos + 8, SEEK_SET);
+	fname[8] = 0;
+	
+	for (n = 0; n < wad->lumpCount; ++n) {
+		readLumpInfo(&fLumpInfo, wad, n);
+		
+		if (!strcmp(fLumpInfo.name, name)) {
+			memcpy(lumpInfo, &fLumpInfo, sizeof(lumpInfo_t));
+			return 1;
+		}
+	}
+	
+	return 0;
+}
+
+void readPNames(pNames_t *pNames, lumpInfo_t *lumpInfo) {
+	int n;
+	
+	pNames->wad = lumpInfo->wad;
+	
+	fseek(pNames->wad->handle, lumpInfo->pos, SEEK_SET);
+	fread(&pNames->count, 4, 1, pNames->wad->handle);
+	
+	pNames->names = malloc(pNames->count * 9);
+	for (n = 0; n < pNames->count; ++n) {
+		fread(&pNames->names[n], 8, 1, pNames->wad->handle);
+		pNames->names[n][8] = 0;
+	}
 }
