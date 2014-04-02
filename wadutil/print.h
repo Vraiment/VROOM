@@ -11,7 +11,11 @@
 
 #include "types.h"
 
+void printManual();
+
 void printHelp();
+
+void printSeparator();
 
 void printHeader(wad_t *wad);
 

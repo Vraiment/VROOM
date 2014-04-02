@@ -13,34 +13,37 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define ARG_NONE			0x00
+#define ARG_HEADER			0x01
+#define ARG_DIRECTORY		0x02
+#define ARG_PNAMES			0x04
+#define ARG_TEXTURE1		0x08
+#define ARG_TEXTURE2		0x10
+
+typedef struct {
+	const char *fileName;
+	char flags;
+	const char *badArgument;
+} arguments_t;
+
 void cleanUp();
+
+void parseArguments(int argc, const char *argv[], arguments_t *arguments);
 
 wad_t wad;
 
 int main(int argc, const char * argv[]) {
-	const char *mode;
-	
-#ifdef DEBUG
-	char *d_argv[] = {
-		"", //irrelevant
-		"DOOM1.WAD", //file
-		"--TEXTURE1" //mode
-	};
-	
-	if (argc != 3) {
-		*((char***)&argv) = d_argv; //HOW UGLY!
-		argc = 3;
-	}
-#endif
+	arguments_t arguments;
 	
 	atexit(cleanUp);
+	parseArguments(argc - 1, &argv[1], &arguments);
 	
-	if (argc < 3 || argc > 3) {
-		printHelp();
+	if (!arguments.fileName) {
+		printManual();
 		return 0;
 	}
 	
-	if (!readWad(&wad, argv[1])) {
+	if (!readWad(&wad, arguments.fileName)) {
 		printf("could not open %s.\n", argv[1]);
 		return -1;
 	}
@@ -48,24 +51,45 @@ int main(int argc, const char * argv[]) {
 	if (wad.type != NOWAD) {
 		printf("reading file %s.\n", wad.name);
 	} else {
-		printf("%s is not a valid wad file.\n", wad.name);
+		printf("%s is not a valid wad file.", wad.name);
 		return -1;
 	}
 	
-	mode = argv[2];
+	if (arguments.badArgument) {
+		printf("\n\"%s\" is not a valid option.\n\n", arguments.badArgument);
+		printHelp();
+		return 0;
+	}
 	
-	printf("-------------------------\n");
+	if (arguments.flags == ARG_NONE) {
+		printf("\nnothing to do.\n\n");
+		printHelp();
+		return 0;
+	}
 	
-	if (!strcmp(mode, "-h") || !strcmp(mode, "--header")) {
+	if (arguments.flags & ARG_HEADER) {
+		printSeparator();
 		printHeader(&wad);
-	} else if (!strcmp(mode, "-d") || !strcmp(mode, "--directory")) {
+	}
+	
+	if (arguments.flags & ARG_DIRECTORY) {
+		printSeparator();
 		printDirectory(&wad);
-	} else if (!strcmp(mode, "--PNAMES")) {
+	}
+	
+	if (arguments.flags & ARG_PNAMES) {
+		printSeparator();
 		printPNames(&wad);
-	} else if (!strcmp(mode, "--TEXTURE1") || !strcmp(mode, "--TEXTURE2")) {
-		printTextures(&wad, &mode[2]);
-	} else {
-		printf("unknown option %s\n", mode);
+	}
+	
+	if (arguments.flags & ARG_TEXTURE1) {
+		printSeparator();
+		printTextures(&wad, "TEXTURE1");
+	}
+	
+	if (arguments.flags & ARG_TEXTURE2) {
+		printSeparator();
+		printTextures(&wad, "TEXTURE2");
 	}
 	
     return 0;
@@ -73,4 +97,38 @@ int main(int argc, const char * argv[]) {
 
 void cleanUp() {
 	closeWad(&wad);
+}
+
+void parseArguments(int argc, const char *argv[], arguments_t *arguments) {
+	int n;
+	const char *arg;
+	
+	arguments->fileName = NULL;
+	arguments->flags = ARG_NONE;
+	arguments->badArgument = NULL;
+	
+	if (argc == 0) {
+		return;
+	}
+	
+	arguments->fileName = argv[0];
+	
+	for (n = 1; n < argc; ++n) {
+		arg = argv[n];
+		
+		if (!strcmp(arg, "--header") || !strcmp(arg, "-h")) {
+			arguments->flags |= ARG_HEADER;
+		} else if (!strcmp(arg, "--directory") || !strcmp(arg, "-d")) {
+			arguments->flags |= ARG_DIRECTORY;
+		} else if (!strcmp(arg, "--PNAMES")) {
+			arguments->flags |= ARG_PNAMES;
+		} else if (!strcmp(arg, "--TEXTURE1")) {
+			arguments->flags |= ARG_TEXTURE1;
+		}  else if (!strcmp(arg, "--TEXTURE2")) {
+			arguments->flags |= ARG_TEXTURE2;
+		} else {
+			arguments->badArgument = arg;
+			return;
+		}
+	}
 }
