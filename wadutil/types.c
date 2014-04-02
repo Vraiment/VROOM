@@ -34,6 +34,7 @@ char readWad(wad_t *wad, const char *name) {
 		return 1;
 	}
 	
+	//Read WAD type
 	fseek(file, 0, SEEK_SET);
 	fread(type, 4, 1, file);
 	type[4] = 0;
@@ -47,7 +48,7 @@ char readWad(wad_t *wad, const char *name) {
 		return 1;
 	}
 	
-	fread(&wad->lumpCount, 4, 2, file);
+	fread(&wad->lumpCount, 4, 2, file); //lump count and directory pos
 	
 	return 1;
 }
@@ -62,14 +63,14 @@ void readLumpInfo(lumpInfo_t *lumpInfo, wad_t *wad, unsigned int lumpNumber) {
 	
 	fseek(wad->handle, wad->dirPos + (lumpNumber * 16), SEEK_SET);
 	
-	fread(&lumpInfo->pos, 4, 2, wad->handle);
-	fread(&lumpInfo->name, 8, 1, wad->handle);
+	fread(&lumpInfo->pos, 4, 2, wad->handle); //read lump position and size
+	fread(&lumpInfo->name, 8, 1, wad->handle); //read lump name
 	lumpInfo->name[8] = 0;
 }
 
 char findLumpInfo(lumpInfo_t *lumpInfo, wad_t *wad, const char *name) {
 	char fname[9];
-	int n;
+	unsigned int n;
 	lumpInfo_t fLumpInfo;
 	
 	fseek(wad->handle, wad->dirPos + 8, SEEK_SET);
@@ -88,7 +89,7 @@ char findLumpInfo(lumpInfo_t *lumpInfo, wad_t *wad, const char *name) {
 }
 
 void readPNames(pNames_t *pNames, lumpInfo_t *lumpInfo) {
-	int n;
+	unsigned int n;
 	
 	pNames->wad = lumpInfo->wad;
 	

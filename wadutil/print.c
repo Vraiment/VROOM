@@ -22,7 +22,7 @@ void printHeader(wad_t *wad) {
 
 
 void printDirectory(wad_t *wad) {
-	int n;
+	unsigned int n;
 	lumpInfo_t lumpInfo;
 	
 	for (n = 0; n < wad->lumpCount; ++n) {
@@ -35,7 +35,7 @@ void printDirectory(wad_t *wad) {
 }
 
 void printPNames(wad_t *wad) {
-	int n;
+	unsigned int n;
 	lumpInfo_t lumpInfo;
 	pNames_t pNames = { NULL, 0, NULL };
 	

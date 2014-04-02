@@ -27,8 +27,10 @@ int main(int argc, const char * argv[]) {
 		"--PNAMES" //mode
 	};
 	
-	*((char***)&argv) = d_argv; //HOW UGLY!
-	argc = 3;
+	if (argc != 3) {
+		*((char***)&argv) = d_argv; //HOW UGLY!
+		argc = 3;
+	}
 #endif
 	
 	atexit(cleanUp);
