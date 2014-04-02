@@ -71,10 +71,21 @@
 		5B1678D018EB7A0000FCF028 /* z_zone.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B16788F18EB7A0000FCF028 /* z_zone.c */; };
 		5B1678D218EB846000FCF028 /* libX11.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1678D118EB846000FCF028 /* libX11.6.dylib */; };
 		5B1678D418EB88D000FCF028 /* libXext.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1678D318EB88D000FCF028 /* libXext.6.dylib */; };
+		5B67DA2918EBC62100A8A8D4 /* wadutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B67DA2818EBC62100A8A8D4 /* wadutil.c */; };
+		5B67DA3618EBD5A400A8A8D4 /* types.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B67DA3418EBD53000A8A8D4 /* types.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		5B1677F818EB78A400FCF028 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		5B67DA2418EBC62100A8A8D4 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -213,6 +224,10 @@
 		5B16789018EB7A0000FCF028 /* z_zone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = z_zone.h; path = vroom/z_zone.h; sourceTree = SOURCE_ROOT; };
 		5B1678D118EB846000FCF028 /* libX11.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libX11.6.dylib; path = /opt/X11/lib/libX11.6.dylib; sourceTree = "<absolute>"; };
 		5B1678D318EB88D000FCF028 /* libXext.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXext.6.dylib; path = /opt/X11/lib/libXext.6.dylib; sourceTree = "<absolute>"; };
+		5B67DA2618EBC62100A8A8D4 /* wadutil */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = wadutil; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B67DA2818EBC62100A8A8D4 /* wadutil.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = wadutil.c; sourceTree = "<group>"; };
+		5B67DA3318EBD46800A8A8D4 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		5B67DA3418EBD53000A8A8D4 /* types.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = types.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +240,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5B67DA2318EBC62100A8A8D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -232,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				5B1677FC18EB78A400FCF028 /* vroom */,
+				5B67DA2718EBC62100A8A8D4 /* wadutil */,
 				5B1678D518EB891A00FCF028 /* Libraries */,
 				5B1677FB18EB78A400FCF028 /* Products */,
 			);
@@ -241,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				5B1677FA18EB78A400FCF028 /* VROOM */,
+				5B67DA2618EBC62100A8A8D4 /* wadutil */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -386,6 +410,16 @@
 			path = vroom;
 			sourceTree = "<group>";
 		};
+		5B67DA2718EBC62100A8A8D4 /* wadutil */ = {
+			isa = PBXGroup;
+			children = (
+				5B67DA2818EBC62100A8A8D4 /* wadutil.c */,
+				5B67DA3318EBD46800A8A8D4 /* types.h */,
+				5B67DA3418EBD53000A8A8D4 /* types.c */,
+			);
+			path = wadutil;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -404,6 +438,23 @@
 			name = VROOM;
 			productName = VROOM;
 			productReference = 5B1677FA18EB78A400FCF028 /* VROOM */;
+			productType = "com.apple.product-type.tool";
+		};
+		5B67DA2518EBC62100A8A8D4 /* wadutil */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B67DA2C18EBC62100A8A8D4 /* Build configuration list for PBXNativeTarget "wadutil" */;
+			buildPhases = (
+				5B67DA2218EBC62100A8A8D4 /* Sources */,
+				5B67DA2318EBC62100A8A8D4 /* Frameworks */,
+				5B67DA2418EBC62100A8A8D4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = wadutil;
+			productName = wadutil;
+			productReference = 5B67DA2618EBC62100A8A8D4 /* wadutil */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -428,6 +479,7 @@
 			projectRoot = "";
 			targets = (
 				5B1677F918EB78A400FCF028 /* VROOM */,
+				5B67DA2518EBC62100A8A8D4 /* wadutil */,
 			);
 		};
 /* End PBXProject section */
@@ -499,6 +551,15 @@
 				5B1678C818EB7A0000FCF028 /* s_sound.c in Sources */,
 				5B1678AA18EB7A0000FCF028 /* m_swap.c in Sources */,
 				5B16789C18EB7A0000FCF028 /* hu_stuff.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B67DA2218EBC62100A8A8D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B67DA3618EBD5A400A8A8D4 /* types.c in Sources */,
+				5B67DA2918EBC62100A8A8D4 /* wadutil.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +678,24 @@
 			};
 			name = Release;
 		};
+		5B67DA2D18EBC62100A8A8D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5B67DA2E18EBC62100A8A8D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -637,6 +716,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		5B67DA2C18EBC62100A8A8D4 /* Build configuration list for PBXNativeTarget "wadutil" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B67DA2D18EBC62100A8A8D4 /* Debug */,
+				5B67DA2E18EBC62100A8A8D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

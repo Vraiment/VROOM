@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>291CF7FE-93C6-412A-B4C5-FF508C95FBE6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>VROOM</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8B638E01-CB69-4309-A92C-4619870F7CA8</key>
+		<string>https://github.com/Vraiment/VROOM.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>VROOM.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8B638E01-CB69-4309-A92C-4619870F7CA8</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Vraiment/VROOM.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8B638E01-CB69-4309-A92C-4619870F7CA8</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8B638E01-CB69-4309-A92C-4619870F7CA8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>VROOM</string>
+		</dict>
+	</array>
+</dict>
+</plist>
