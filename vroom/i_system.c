@@ -45,6 +45,9 @@ rcsid[] = "$Id: m_bbox.c,v 1.1 1997/02/03 22:45:10 b1 Exp $";
 #endif
 #include "i_system.h"
 
+#if DEBUG
+#include <assert.h>
+#endif
 
 
 
@@ -165,6 +168,7 @@ void I_Error (char *error, ...)
 
     // Message first.
     va_start (argptr,error);
+	printf("\n");
     fprintf (stderr, "Error: ");
     vfprintf (stderr,error,argptr);
     fprintf (stderr, "\n");
@@ -179,5 +183,9 @@ void I_Error (char *error, ...)
     D_QuitNetGame ();
     I_ShutdownGraphics();
     
+#if DEBUG
+	assert(0);
+#else
     exit(-1);
+#endif
 }
