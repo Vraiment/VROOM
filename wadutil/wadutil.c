@@ -33,6 +33,7 @@
 #define ARG_PNAMES			0x04
 #define ARG_TEXTURE1		0x08
 #define ARG_TEXTURE2		0x10
+#define ARG_COLORMAP		0x20
 
 typedef struct {
 	const char *fileName;
@@ -106,6 +107,11 @@ int main(int argc, const char * argv[]) {
 		printTextures(&wad, "TEXTURE2");
 	}
 	
+	if (arguments.flags & ARG_COLORMAP) {
+		printSeparator();
+		printColormaps(&wad);
+	}
+	
     return 0;
 }
 
@@ -140,6 +146,8 @@ void parseArguments(int argc, const char *argv[], arguments_t *arguments) {
 			arguments->flags |= ARG_TEXTURE1;
 		}  else if (!strcmp(arg, "--TEXTURE2")) {
 			arguments->flags |= ARG_TEXTURE2;
+		} else if (!strcmp(arg, "--COLORMAP")) {
+			arguments->flags |= ARG_COLORMAP;
 		} else {
 			arguments->badArgument = arg;
 			return;

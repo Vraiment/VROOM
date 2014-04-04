@@ -22,6 +22,7 @@
 
 #include "print.h"
 
+#include <stdio.h>
 #include <stdlib.h>
 
 void printManual() {
@@ -43,6 +44,7 @@ void printManual() {
 	printf("\t--PNAMES\n\t\tPrints the list of patch names of the WAD file.\n\n");
 	printf("\t--TEXTURE1\n\t\tPrints the info about the TEXTURE1 lump.\n\n");
 	printf("\t--TEXTURE2\n\t\tPrints the info about the TEXTURE2 lump.\n\n");
+	printf("\t--COLORMAP\n\t\tPrints the info about the COLORMAP lump.\n\n");
 }
 
 void printHelp() {
@@ -147,4 +149,40 @@ void printTextures(wad_t *wad, const char *name) {
 	printf("\n\tTotal textures in \"%s\":\t%d\n", name, textureCount);
 	
 	freeTextures(textures, textureCount);
+}
+
+void printColormaps(wad_t *wad) {
+	int n, m, c;
+	lumpInfo_t lumpInfo;
+	colormaps_t colorMaps;
+	
+	if (!findLumpInfo(&lumpInfo, wad, "COLORMAP")) {
+		printf("\tno \"COLORMAP\" lump found.\n");
+		return;
+	}
+	
+	readColormaps(&lumpInfo, colorMaps);
+	
+	printf("=>COLORMAP\n");
+	
+	for (n = 0; n < COLORMAPCOUNT; ++n) {
+		printf("\t%d)\n\t\t", n);
+		
+		for (m = c = 0; m < COLORMAPSIZE; ++m) {
+			printf("0x%.2X", colorMaps[n][m]);
+			
+			if (c == 7) {
+				printf("\n\t\t");
+				c = 0;
+			} else {
+				printf("\t");
+				++c;
+			}
+		}
+		
+		printf("\n");
+	}
+	
+	printf("\n\tTotal colormaps: %d\n", COLORMAPCOUNT);
+	printf("\tColormap size: %d\n", COLORMAPSIZE);
 }

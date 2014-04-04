@@ -188,3 +188,8 @@ void freeTextures(texture_t *textures, unsigned int count) {
 	
 	free(textures);
 }
+
+void readColormaps(lumpInfo_t *lumpInfo, colormaps_t maps) {
+	fseek(lumpInfo->wad->handle, lumpInfo->pos, SEEK_SET);
+	fread(maps, COLORMAPCOUNT, COLORMAPSIZE, lumpInfo->wad->handle);
+}

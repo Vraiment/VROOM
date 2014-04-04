@@ -29,6 +29,9 @@
 #define IWAD 1
 #define PWAD 2
 
+#define COLORMAPCOUNT 34
+#define COLORMAPSIZE 256
+
 typedef struct {
 	FILE *handle;
 	char *name;
@@ -82,5 +85,9 @@ typedef struct {
 
 texture_t *readTextures(lumpInfo_t *lumpInfo, unsigned int *count);
 void freeTextures(texture_t *textures, unsigned int count);
+
+typedef unsigned char colormaps_t[COLORMAPCOUNT][COLORMAPSIZE];
+
+void readColormaps(lumpInfo_t *lumpInfo, colormaps_t maps);
 
 #endif //WADUTIL_WAD

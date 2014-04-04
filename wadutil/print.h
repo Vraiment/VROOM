@@ -39,4 +39,6 @@ void printPNames(wad_t *wad);
 
 void printTextures(wad_t *wad, const char *name);
 
+void printColormaps(wad_t *wad);
+
 #endif //WADUTIL_PRINT
