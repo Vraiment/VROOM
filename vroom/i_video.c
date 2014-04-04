@@ -175,7 +175,7 @@ void I_ShutdownGraphics(void)
   shmctl(X_shminfo.shmid, IPC_RMID, 0);
 
   // Paranoia.
-  image->data = NULL;
+  if (image) image->data = NULL;
 }
 
 
