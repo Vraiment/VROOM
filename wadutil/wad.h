@@ -1,5 +1,5 @@
 //
-//  types.h
+//  wad.h
 //  wadutil
 //
 //  Created by Vraiment on 01/04/14.

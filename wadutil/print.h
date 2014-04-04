@@ -23,7 +23,7 @@
 #ifndef WADUTIL_PRINT
 #define WADUTIL_PRINT
 
-#include "types.h"
+#include "wad.h"
 
 void printManual();
 

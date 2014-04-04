@@ -1,5 +1,5 @@
 //
-//  types.c
+//  wad.c
 //  wadutil
 //
 //  Created by Vraiment on 01/04/14.
@@ -20,7 +20,7 @@
 //  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 //
 
-#include "types.h"
+#include "wad.h"
 
 #include <stdlib.h>
 #include <string.h>
