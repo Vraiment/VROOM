@@ -88,12 +88,12 @@ void printPNames(wad_t *wad) {
 	lumpInfo_t lumpInfo;
 	pNames_t pNames = { NULL, 0, NULL };
 	
-	printf("=>PNAMES\n");
-	
 	if (!findLumpInfo(&lumpInfo, wad, "PNAMES")) {
 		printf("\tno \"PNAMES\" lump found.\n");
 		return;
 	}
+	
+	printf("=>PNAMES\n");
 	
 	readPNames(&pNames, &lumpInfo);
 	
@@ -113,12 +113,12 @@ void printTextures(wad_t *wad, const char *name) {
 	patch_t *patch;
 	unsigned int n, m;
 	
-	printf("=>%s\n", name);
-	
 	if (!findLumpInfo(&lumpInfo, wad, name)) {
 		printf("\tno \"%s\" lump found.\n", name);
 		return;
 	}
+	
+	printf("=>%s\n", name);
 	
 	textures = readTextures(&lumpInfo, &textureCount);
 	if (textureCount && !textures) {
