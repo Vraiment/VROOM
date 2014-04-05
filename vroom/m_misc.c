@@ -227,12 +227,77 @@ typedef struct
 {
     char*	name;
     int*	location;
-    int		defaultvalue;
+    intptr_t		defaultvalue;
     int		scantranslate;		// PC scan code hack
     int		untranslated;		// lousy hack
 } default_t;
 
-default_t	*defaults;
+default_t	defaults[] =
+{
+    {"mouse_sensitivity",&mouseSensitivity, 5},
+    {"sfx_volume",&snd_SfxVolume, 8},
+    {"music_volume",&snd_MusicVolume, 8},
+    {"show_messages",&showMessages, 1},
+    
+
+#ifdef NORMALUNIX
+    {"key_right",&key_right, KEY_RIGHTARROW},
+    {"key_left",&key_left, KEY_LEFTARROW},
+    {"key_up",&key_up, KEY_UPARROW},
+    {"key_down",&key_down, KEY_DOWNARROW},
+    {"key_strafeleft",&key_strafeleft, ','},
+    {"key_straferight",&key_straferight, '.'},
+
+    {"key_fire",&key_fire, KEY_RCTRL},
+    {"key_use",&key_use, ' '},
+    {"key_strafe",&key_strafe, KEY_RALT},
+    {"key_speed",&key_speed, KEY_RSHIFT},
+
+// UNIX hack, to be removed. 
+#ifdef SNDSERV
+    {"sndserver", (int *) &sndserver_filename, (intptr_t) "sndserver"},
+    {"mb_used", &mb_used, 2},
+#endif
+    
+#endif
+
+#ifdef LINUX
+    {"mousedev", (int*)&mousedev, (intptr_t)"/dev/ttyS0"},
+    {"mousetype", (int*)&mousetype, (intptr_t)"microsoft"},
+#endif
+
+    {"use_mouse",&usemouse, 1},
+    {"mouseb_fire",&mousebfire,0},
+    {"mouseb_strafe",&mousebstrafe,1},
+    {"mouseb_forward",&mousebforward,2},
+
+    {"use_joystick",&usejoystick, 0},
+    {"joyb_fire",&joybfire,0},
+    {"joyb_strafe",&joybstrafe,1},
+    {"joyb_use",&joybuse,3},
+    {"joyb_speed",&joybspeed,2},
+
+    {"screenblocks",&screenblocks, 9},
+    {"detaillevel",&detailLevel, 0},
+
+    {"snd_channels",&numChannels, 3},
+
+
+
+    {"usegamma",&usegamma, 0},
+
+    {"chatmacro0", (int *) &chat_macros[0], (intptr_t) HUSTR_CHATMACRO0 },
+    {"chatmacro1", (int *) &chat_macros[1], (intptr_t) HUSTR_CHATMACRO1 },
+    {"chatmacro2", (int *) &chat_macros[2], (intptr_t) HUSTR_CHATMACRO2 },
+    {"chatmacro3", (int *) &chat_macros[3], (intptr_t) HUSTR_CHATMACRO3 },
+    {"chatmacro4", (int *) &chat_macros[4], (intptr_t) HUSTR_CHATMACRO4 },
+    {"chatmacro5", (int *) &chat_macros[5], (intptr_t) HUSTR_CHATMACRO5 },
+    {"chatmacro6", (int *) &chat_macros[6], (intptr_t) HUSTR_CHATMACRO6 },
+    {"chatmacro7", (int *) &chat_macros[7], (intptr_t) HUSTR_CHATMACRO7 },
+    {"chatmacro8", (int *) &chat_macros[8], (intptr_t) HUSTR_CHATMACRO8 },
+    {"chatmacro9", (int *) &chat_macros[9], (intptr_t) HUSTR_CHATMACRO9 }
+
+};
 
 int	numdefaults;
 char*	defaultfile;
