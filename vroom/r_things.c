@@ -187,7 +187,7 @@ void R_InitSpriteDefs (char** namelist)
     while (*check != NULL)
 	check++;
 
-    numsprites = check-namelist;
+    numsprites = (int)(check-namelist); //an interger should be enough
 	
     if (!numsprites)
 	return;
