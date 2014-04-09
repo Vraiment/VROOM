@@ -474,6 +474,7 @@ W_CacheLumpNum
   int		tag )
 {
     byte*	ptr;
+	char	no[8];
 
     if ((unsigned)lump >= numlumps)
 	I_Error ("W_CacheLumpNum: %i >= numlumps",lump);
@@ -483,7 +484,8 @@ W_CacheLumpNum
 	// read the lump in
 	
 	//printf ("cache miss on lump %i\n",lump);
-	ptr = Z_Malloc (W_LumpLength (lump), tag, &lumpcache[lump]);
+	sprintf(no, "l:%d", lump);
+	ptr = Z_Malloc (W_LumpLength (lump), tag, &lumpcache[lump], no);
 	W_ReadLump (lump, lumpcache[lump]);
     }
     else

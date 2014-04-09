@@ -53,7 +53,7 @@ wipe_shittyColMajorXform
     int		y;
     short*	dest;
 
-    dest = (short*) Z_Malloc(width*height*2, PU_STATIC, 0);
+    dest = (short*) Z_Malloc(width*height*2, PU_STATIC, 0, "dest@f_wipe.c:56");
 
     for(y=0;y<height;y++)
 	for(x=0;x<width;x++)
@@ -151,7 +151,7 @@ wipe_initMelt
     
     // setup initial column positions
     // (y<0 => not ready to scroll yet)
-    y = (int *) Z_Malloc(width*sizeof(int), PU_STATIC, 0);
+    y = (int *) Z_Malloc(width*sizeof(int), PU_STATIC, 0, "y@f_wipe.c:154");
     y[0] = -(M_Random()%16);
     for (i=1;i<width;i++)
     {

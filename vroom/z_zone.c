@@ -26,6 +26,7 @@
 #include "i_system.h"
 #include "doomdef.h"
 
+#include <time.h>
 
 //
 // ZONE MEMORY ALLOCATION
@@ -40,11 +41,15 @@
  
 #define ZONEID	0x1d4a11
 
+FILE *logfile;
+
+#define SEPARATOR "------------------------------\n"
 
 typedef struct
 {
     // total bytes malloced, including header
     int		size;
+	int		free;
 
     // start / end cap for linked list
     memblock_t	blocklist;
@@ -56,8 +61,6 @@ typedef struct
 
 
 memzone_t*	mainzone;
-
-
 
 //
 // Z_ClearZone
@@ -92,6 +95,8 @@ void Z_Init (void)
 {
     memblock_t*	block;
     int		size;
+	time_t	rawtime;
+	struct tm *currenttime;
 
     mainzone = (memzone_t *)I_ZoneBase (&size);
     mainzone->size = size;
@@ -109,8 +114,21 @@ void Z_Init (void)
 
     // NULL indicates a free block.
     block->user = NULL;
+	strcpy(block->name, "ROVER");
     
     block->size = mainzone->size - sizeof(memzone_t);
+	mainzone->free = block->size - sizeof(memblock_t);
+	
+	time(&rawtime);
+	currenttime = localtime(&rawtime);
+	
+	logfile = fopen("log.txt", "w");
+	
+	fprintf(logfile, SEPARATOR);
+	fprintf(logfile, "executing at: %s\n", asctime(currenttime));
+	fflush(logfile);
+	
+	strcpy(mainzone->blocklist.name, "BLOCKLIST");
 }
 
 
@@ -121,8 +139,15 @@ void Z_Free (void* ptr)
 {
     memblock_t*		block;
     memblock_t*		other;
+	int				size;
 	
     block = (memblock_t *) ( (byte *)ptr - sizeof(memblock_t));
+	size = block->size;
+	
+	fprintf(logfile, SEPARATOR);
+	fprintf(logfile, "\"%s\" @ %p is releasing memory\n", block->name, block->user);
+	fprintf(logfile, "\treleasing\t%dB @ %p\n", block->size, block);
+	fflush(logfile);
 
     if (block->id != ZONEID)
 	I_Error ("Z_Free: freed a pointer without ZONEID");
@@ -167,6 +192,8 @@ void Z_Free (void* ptr)
 	if (other == mainzone->rover)
 	    mainzone->rover = block;
     }
+	
+	mainzone->free += size;
 }
 
 
@@ -182,7 +209,8 @@ void*
 Z_Malloc
 ( int		size,
   int		tag,
-  void*		user )
+  void*		user,
+  char*		usrname)
 {
     int		extra;
     memblock_t*	start;
@@ -190,6 +218,11 @@ Z_Malloc
     memblock_t* newblock;
     memblock_t*	base;
 
+	fprintf(logfile, SEPARATOR);
+	fprintf(logfile, "\"%s\" @ %p requested memory\n", usrname, user);
+	fprintf(logfile, "\trequested\t%dB\n", size);
+	fflush(logfile);
+	
     size = (size + 3) & ~3;
     
     // scan through the block list,
@@ -257,6 +290,7 @@ Z_Malloc
 	newblock->prev = base;
 	newblock->next = base->next;
 	newblock->next->prev = newblock;
+	strcpy(newblock->name, "ROVER");
 
 	base->next = newblock;
 	base->size = size;
@@ -282,7 +316,15 @@ Z_Malloc
     mainzone->rover = base->next;	
 	
     base->id = ZONEID;
-    
+	strcpy(base->name, usrname);
+	
+	fprintf(logfile, "\tgranted\t\t%dB @ %p\n", size, base);
+	fprintf(logfile, "\tprevious\t\"%s\" @ %p\n", base->prev->name, base->prev);
+	fprintf(logfile, "\tnext\t\t\"%s\" @ %p\n", base->next->name, base->prev);
+	fflush(logfile);
+	
+	mainzone->free -= size;
+	
     return (void *) ((byte *)base + sizeof(memblock_t));
 }
 

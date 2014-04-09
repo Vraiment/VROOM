@@ -1571,7 +1571,7 @@ void WI_loadData(void)
     {
 	NUMCMAPS = 32;								
 	lnames = (patch_t **) Z_Malloc(sizeof(patch_t*) * NUMCMAPS,
-				       PU_STATIC, 0);
+				       PU_STATIC, 0, "lnames@wi_stuff.c:1573");
 	for (i=0 ; i<NUMCMAPS ; i++)
 	{								
 	    sprintf(name, "CWILV%2.2d", i);
@@ -1581,7 +1581,7 @@ void WI_loadData(void)
     else
     {
 	lnames = (patch_t **) Z_Malloc(sizeof(patch_t*) * NUMMAPS,
-				       PU_STATIC, 0);
+				       PU_STATIC, 0, "lnames@wi_stuff.c:1583");
 	for (i=0 ; i<NUMMAPS ; i++)
 	{
 	    sprintf(name, "WILV%d%d", wbs->epsd, i);

@@ -172,7 +172,7 @@ void S_Init
   // (the maximum numer of sounds rendered
   // simultaneously) within zone memory.
   channels =
-    (channel_t *) Z_Malloc(numChannels*sizeof(channel_t), PU_STATIC, 0);
+    (channel_t *) Z_Malloc(numChannels*sizeof(channel_t), PU_STATIC, 0, "channels@s_sound.c:174");
   
   // Free all channels for use
   for (i=0 ; i<numChannels ; i++)

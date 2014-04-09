@@ -276,7 +276,7 @@ EV_DoFloor
 	
 	// new floor thinker
 	rtn = 1;
-	floor = Z_Malloc (sizeof(*floor), PU_LEVSPEC, 0);
+	floor = Z_Malloc (sizeof(*floor), PU_LEVSPEC, 0, "floor@p_floor.c:279");
 	P_AddThinker (&floor->thinker);
 	sec->specialdata = floor;
 	floor->thinker.function.acp1 = (actionf_p1) T_MoveFloor;
@@ -479,7 +479,7 @@ EV_BuildStairs
 	
 	// new floor thinker
 	rtn = 1;
-	floor = Z_Malloc (sizeof(*floor), PU_LEVSPEC, 0);
+	floor = Z_Malloc (sizeof(*floor), PU_LEVSPEC, 0, "floor@p_floor.c:482");
 	P_AddThinker (&floor->thinker);
 	sec->specialdata = floor;
 	floor->thinker.function.acp1 = (actionf_p1) T_MoveFloor;
@@ -532,7 +532,7 @@ EV_BuildStairs
 					
 		sec = tsec;
 		secnum = newsecnum;
-		floor = Z_Malloc (sizeof(*floor), PU_LEVSPEC, 0);
+		floor = Z_Malloc (sizeof(*floor), PU_LEVSPEC, 0, "floor@p_floor.c:535");
 
 		P_AddThinker (&floor->thinker);
 

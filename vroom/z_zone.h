@@ -46,7 +46,7 @@
 
 
 void	Z_Init (void);
-void*	Z_Malloc (int size, int tag, void *ptr);
+void*	Z_Malloc (int size, int tag, void *ptr, char *usrname);
 void    Z_Free (void *ptr);
 void    Z_FreeTags (int lowtag, int hightag);
 void    Z_DumpHeap (int lowtag, int hightag);
@@ -64,6 +64,7 @@ typedef struct memblock_s
     int			id;	// should be ZONEID
     struct memblock_s*	next;
     struct memblock_s*	prev;
+	char		name[64];
 } memblock_t;
 
 //

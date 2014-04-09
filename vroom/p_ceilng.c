@@ -197,7 +197,7 @@ EV_DoCeiling
 	
 	// new door thinker
 	rtn = 1;
-	ceiling = Z_Malloc (sizeof(*ceiling), PU_LEVSPEC, 0);
+	ceiling = Z_Malloc (sizeof(*ceiling), PU_LEVSPEC, 0, "ceiling@p_ceiling:200");
 	P_AddThinker (&ceiling->thinker);
 	sec->specialdata = ceiling;
 	ceiling->thinker.function.acp1 = (actionf_p1)T_MoveCeiling;
