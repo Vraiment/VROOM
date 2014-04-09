@@ -75,6 +75,8 @@
 
 #include "d_main.h"
 
+#include <SDL2/SDL.h>
+
 //
 // D-DoomLoop()
 // Not a globally visible function,
@@ -799,6 +801,12 @@ void D_DoomMain (void)
     FindResponseFile ();
 	
     IdentifyVersion ();
+	
+	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
+		I_Error((char*)SDL_GetError());
+	}
+	
+	atexit(SDL_Quit);
 	
     setbuf (stdout, NULL);
     modifiedgame = false;
