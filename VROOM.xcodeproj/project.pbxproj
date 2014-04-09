@@ -230,6 +230,7 @@
 		5B3AB5C918F50B1B00C73A8F /* FILES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = FILES.txt; sourceTree = "<group>"; };
 		5B3AB5CA18F50B2200C73A8F /* GPL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = GPL.txt; sourceTree = SOURCE_ROOT; };
 		5B3AB5CB18F50B2200C73A8F /* LGPL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LGPL.txt; sourceTree = SOURCE_ROOT; };
+		5B3AB5CC18F50DEB00C73A8F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		5B67DA2618EBC62100A8A8D4 /* wadutil */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = wadutil; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B67DA2818EBC62100A8A8D4 /* wadutil.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = wadutil.c; sourceTree = "<group>"; };
 		5B67DA3318EBD46800A8A8D4 /* wad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wad.h; sourceTree = "<group>"; };
@@ -423,6 +424,7 @@
 				5B3AB5C918F50B1B00C73A8F /* FILES.txt */,
 				5B3AB5CA18F50B2200C73A8F /* GPL.txt */,
 				5B3AB5CB18F50B2200C73A8F /* LGPL.txt */,
+				5B3AB5CC18F50DEB00C73A8F /* README.md */,
 			);
 			path = docs;
 			sourceTree = "<group>";
