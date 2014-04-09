@@ -72,19 +72,22 @@
 		5B1678D018EB7A0000FCF028 /* z_zone.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B16788F18EB7A0000FCF028 /* z_zone.c */; };
 		5B1678D218EB846000FCF028 /* libX11.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1678D118EB846000FCF028 /* libX11.6.dylib */; };
 		5B1678D418EB88D000FCF028 /* libXext.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1678D318EB88D000FCF028 /* libXext.6.dylib */; };
+		5B3AB5CE18F50EC300C73A8F /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3AB5CD18F50EC300C73A8F /* SDL2.framework */; };
 		5B67DA2918EBC62100A8A8D4 /* wadutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B67DA2818EBC62100A8A8D4 /* wadutil.c */; };
 		5B67DA3618EBD5A400A8A8D4 /* wad.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B67DA3418EBD53000A8A8D4 /* wad.c */; };
+		5BD50C0918F5AD2200B5857F /* SDL2.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5B3AB5CD18F50EC300C73A8F /* SDL2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		5B1677F818EB78A400FCF028 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				5BD50C0918F5AD2200B5857F /* SDL2.framework in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 		5B67DA2418EBC62100A8A8D4 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -231,6 +234,7 @@
 		5B3AB5CA18F50B2200C73A8F /* GPL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = GPL.txt; sourceTree = SOURCE_ROOT; };
 		5B3AB5CB18F50B2200C73A8F /* LGPL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LGPL.txt; sourceTree = SOURCE_ROOT; };
 		5B3AB5CC18F50DEB00C73A8F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
+		5B3AB5CD18F50EC300C73A8F /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2.framework; sourceTree = "<group>"; };
 		5B67DA2618EBC62100A8A8D4 /* wadutil */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = wadutil; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B67DA2818EBC62100A8A8D4 /* wadutil.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = wadutil.c; sourceTree = "<group>"; };
 		5B67DA3318EBD46800A8A8D4 /* wad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wad.h; sourceTree = "<group>"; };
@@ -242,6 +246,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B3AB5CE18F50EC300C73A8F /* SDL2.framework in Frameworks */,
 				5B1678D218EB846000FCF028 /* libX11.6.dylib in Frameworks */,
 				5B1678D418EB88D000FCF028 /* libXext.6.dylib in Frameworks */,
 			);
@@ -411,11 +416,12 @@
 		5B1678D518EB891A00FCF028 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				5B3AB5CD18F50EC300C73A8F /* SDL2.framework */,
 				5B1678D318EB88D000FCF028 /* libXext.6.dylib */,
 				5B1678D118EB846000FCF028 /* libX11.6.dylib */,
 			);
 			name = Libraries;
-			path = vroom;
+			path = libs;
 			sourceTree = "<group>";
 		};
 		5B3AB5C818F50B0800C73A8F /* docs */ = {
@@ -662,6 +668,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libs",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					NORMALUNIX,
@@ -683,6 +693,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libs",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					NORMALUNIX,
