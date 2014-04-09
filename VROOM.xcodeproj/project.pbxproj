@@ -227,6 +227,9 @@
 		5B16789018EB7A0000FCF028 /* z_zone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = z_zone.h; path = vroom/z_zone.h; sourceTree = SOURCE_ROOT; };
 		5B1678D118EB846000FCF028 /* libX11.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libX11.6.dylib; path = /opt/X11/lib/libX11.6.dylib; sourceTree = "<absolute>"; };
 		5B1678D318EB88D000FCF028 /* libXext.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXext.6.dylib; path = /opt/X11/lib/libXext.6.dylib; sourceTree = "<absolute>"; };
+		5B3AB5C918F50B1B00C73A8F /* FILES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = FILES.txt; sourceTree = "<group>"; };
+		5B3AB5CA18F50B2200C73A8F /* GPL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = GPL.txt; sourceTree = SOURCE_ROOT; };
+		5B3AB5CB18F50B2200C73A8F /* LGPL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LGPL.txt; sourceTree = SOURCE_ROOT; };
 		5B67DA2618EBC62100A8A8D4 /* wadutil */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = wadutil; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B67DA2818EBC62100A8A8D4 /* wadutil.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = wadutil.c; sourceTree = "<group>"; };
 		5B67DA3318EBD46800A8A8D4 /* wad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wad.h; sourceTree = "<group>"; };
@@ -258,6 +261,7 @@
 			children = (
 				5B1677FC18EB78A400FCF028 /* vroom */,
 				5B67DA2718EBC62100A8A8D4 /* wadutil */,
+				5B3AB5C818F50B0800C73A8F /* docs */,
 				5B1678D518EB891A00FCF028 /* Libraries */,
 				5B1677FB18EB78A400FCF028 /* Products */,
 			);
@@ -411,6 +415,16 @@
 			);
 			name = Libraries;
 			path = vroom;
+			sourceTree = "<group>";
+		};
+		5B3AB5C818F50B0800C73A8F /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				5B3AB5C918F50B1B00C73A8F /* FILES.txt */,
+				5B3AB5CA18F50B2200C73A8F /* GPL.txt */,
+				5B3AB5CB18F50B2200C73A8F /* LGPL.txt */,
+			);
+			path = docs;
 			sourceTree = "<group>";
 		};
 		5B67DA2718EBC62100A8A8D4 /* wadutil */ = {
