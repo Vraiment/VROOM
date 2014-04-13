@@ -3,7 +3,7 @@
 //  wadutil
 //
 //  Created by Vraiment on 01/04/14.
-//  Copyright (c) 2014 Vraiment. All rights reserved.
+//  Copyright (c) 2014 Vraiment.
 //
 //  This software is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU Lesser General Public
