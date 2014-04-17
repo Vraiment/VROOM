@@ -70,8 +70,6 @@
 		5B1678CE18EB7A0000FCF028 /* w_wad.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B16788B18EB7A0000FCF028 /* w_wad.c */; };
 		5B1678CF18EB7A0000FCF028 /* wi_stuff.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B16788D18EB7A0000FCF028 /* wi_stuff.c */; };
 		5B1678D018EB7A0000FCF028 /* z_zone.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B16788F18EB7A0000FCF028 /* z_zone.c */; };
-		5B1678D218EB846000FCF028 /* libX11.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1678D118EB846000FCF028 /* libX11.6.dylib */; };
-		5B1678D418EB88D000FCF028 /* libXext.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1678D318EB88D000FCF028 /* libXext.6.dylib */; };
 		5B3AB5CE18F50EC300C73A8F /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3AB5CD18F50EC300C73A8F /* SDL2.framework */; };
 		5B67DA2918EBC62100A8A8D4 /* wadutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B67DA2818EBC62100A8A8D4 /* wadutil.c */; };
 		5B67DA3618EBD5A400A8A8D4 /* wad.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B67DA3418EBD53000A8A8D4 /* wad.c */; };
@@ -228,8 +226,6 @@
 		5B16788E18EB7A0000FCF028 /* wi_stuff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wi_stuff.h; path = vroom/wi_stuff.h; sourceTree = SOURCE_ROOT; };
 		5B16788F18EB7A0000FCF028 /* z_zone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = z_zone.c; path = vroom/z_zone.c; sourceTree = SOURCE_ROOT; };
 		5B16789018EB7A0000FCF028 /* z_zone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = z_zone.h; path = vroom/z_zone.h; sourceTree = SOURCE_ROOT; };
-		5B1678D118EB846000FCF028 /* libX11.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libX11.6.dylib; path = /opt/X11/lib/libX11.6.dylib; sourceTree = "<absolute>"; };
-		5B1678D318EB88D000FCF028 /* libXext.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXext.6.dylib; path = /opt/X11/lib/libXext.6.dylib; sourceTree = "<absolute>"; };
 		5B3AB5C918F50B1B00C73A8F /* FILES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = FILES.txt; sourceTree = "<group>"; };
 		5B3AB5CA18F50B2200C73A8F /* GPL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = GPL.txt; sourceTree = SOURCE_ROOT; };
 		5B3AB5CB18F50B2200C73A8F /* LGPL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LGPL.txt; sourceTree = SOURCE_ROOT; };
@@ -247,8 +243,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B3AB5CE18F50EC300C73A8F /* SDL2.framework in Frameworks */,
-				5B1678D218EB846000FCF028 /* libX11.6.dylib in Frameworks */,
-				5B1678D418EB88D000FCF028 /* libXext.6.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,8 +411,6 @@
 			isa = PBXGroup;
 			children = (
 				5B3AB5CD18F50EC300C73A8F /* SDL2.framework */,
-				5B1678D318EB88D000FCF028 /* libXext.6.dylib */,
-				5B1678D118EB846000FCF028 /* libX11.6.dylib */,
 			);
 			name = Libraries;
 			path = libs;
@@ -681,10 +673,6 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/opt/X11/include,
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/opt/X11/lib,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -705,10 +693,6 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/opt/X11/include,
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/opt/X11/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
